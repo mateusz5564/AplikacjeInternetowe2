@@ -1,17 +1,32 @@
-def cyclone_word(word):
-    word = word.upper()
-    letters = [None] * len(word)
-    half = (len(word) + 1) // 2
-    letters[::2] = word[:half]
-    letters[1::2] = word[:half - 1:-1]
-    return all([left <= right for left, right in zip(letters, letters[1:])])
+def is_cyclone_phrase(phrase):
+    jest = True
+    c = 1
+    x = 0
+    mid = int(phrase.__len__() / 2)
+    if phrase.__len__() == 0:
+        jest = True
+    else:
+        if phrase[x] > phrase[phrase.__len__() - c]:
+            jest = False
+
+        for x in range(1, mid + 1):
+            if phrase.__len__() - c == x:
+                break
+            if phrase[phrase.__len__() - c] > phrase[x]:
+                jest = False
+            c += 1
+            if phrase.__len__() - c <= x:
+                break
+            else:
+                if phrase[x] > phrase[phrase.__len__() - c]:
+                    jest = False
+
+    print(jest)
 
 
-def cyclone_phrase(phrase):
-    return all([cyclone_word(word) for word in phrase.split()])
-
-print(cyclone_phrase("adjourned"))
-print(cyclone_phrase("settled"))
-print(cyclone_phrase("all alone at noon"))
-print(cyclone_phrase("by myself at twelve pm"))
-print(cyclone_phrase("acb"))
+is_cyclone_phrase("adjourned")
+is_cyclone_phrase("settled")
+is_cyclone_phrase("all alone at noon")
+is_cyclone_phrase("by myself at twelve pm")
+is_cyclone_phrase("acb")
+is_cyclone_phrase("")
