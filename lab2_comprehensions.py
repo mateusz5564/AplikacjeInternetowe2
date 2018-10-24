@@ -1,0 +1,7 @@
+print([x*2+1 for x in [0, 1, 2, 3]])
+print([x % 3 == 0 for x in [3, 5, 9, 8]])
+print([word.split("_")[1] for word in ["TA_sam", "TA_guido", "student_poohbear", "student_htiek"] if word.split("_")[0] == "TA"])
+print([word[0].upper() for word in ['apple', 'orange', 'pear']])
+print([word for word in ['apple', 'orange', 'pear'] if word[0] == "a" or word[0] == "p"])
+print([(x, x.__len__()) for x in['apple', 'orange', 'pear']])
+print({x: x.__len__() for x in['apple', 'orange', 'pear']})
